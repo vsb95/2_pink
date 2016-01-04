@@ -23,8 +23,10 @@ namespace WindowsFormsApplication02
         public MainForm()
         {
             InitializeComponent();
-            _service = new UserService.UserService();
             _juornal = new ArrayList();
+            _service = new UserService.UserService();
+
+            
         }
 
         

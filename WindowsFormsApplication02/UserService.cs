@@ -75,18 +75,31 @@ namespace UserService
         {
             Tables = new List<Table>();
             var tableNames = new List<string>();
-            string connectionString = GetConnectionString();
-            _connection = new SqlConnection(connectionString);
-            _connection.Open();
-            const string query = "SELECT * FROM INFORMATION_SCHEMA.TABLES";
-            var command = new SqlCommand(query, _connection);
-            var reader = command.ExecuteReader();
-            while (reader.Read())
-                tableNames.Add(reader["TABLE_NAME"].ToString());
-            reader.Close();
-            tableNames.Remove(tableNames.FirstOrDefault(t => t == "sysdiagrams"));
-            foreach (var tableName in tableNames)
-                Tables.Add(new Table(tableName, _connection));
+            string connectionString = null;
+            try
+            {
+                connectionString = GetConnectionString();
+            }
+            catch (Exception e)
+            {
+                connectionString =
+                    "Server=localhost; Database= Акт оценки стоимости зданий и сооружений; Trusted_Connection = True;";
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                _connection = new SqlConnection(connectionString);
+                _connection.Open();
+                const string query = "SELECT * FROM INFORMATION_SCHEMA.TABLES";
+                var command = new SqlCommand(query, _connection);
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                    tableNames.Add(reader["TABLE_NAME"].ToString());
+                reader.Close();
+                tableNames.Remove(tableNames.FirstOrDefault(t => t == "sysdiagrams"));
+                foreach (var tableName in tableNames)
+                    Tables.Add(new Table(tableName, _connection));
+            }
         }
         /// <summary>
         /// Возвращает коллекцию всех записей указанной таблицы

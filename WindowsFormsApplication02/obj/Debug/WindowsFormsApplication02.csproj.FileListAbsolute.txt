@@ -18,3 +18,13 @@ D:\1\GitRepos\222\WindowsFormsApplication02\obj\Debug\WindowsFormsApplication02.
 D:\1\GitRepos\222\WindowsFormsApplication02\obj\Debug\WindowsFormsApplication02.MainForm.resources
 D:\1\GitRepos\222\WindowsFormsApplication02\obj\Debug\WindowsFormsApplication02.Properties.Resources.resources
 D:\1\GitRepos\222\WindowsFormsApplication02\obj\Debug\WindowsFormsApplication02.csproj.GenerateResource.Cache
+C:\Users\lamarLich\Documents\Visual Studio 2015\Projects\Acts\2_pink\WindowsFormsApplication02\bin\Debug\WindowsFormsApplication02.exe.config
+C:\Users\lamarLich\Documents\Visual Studio 2015\Projects\Acts\2_pink\WindowsFormsApplication02\obj\Debug\WindowsFormsApplication02.exe
+C:\Users\lamarLich\Documents\Visual Studio 2015\Projects\Acts\2_pink\WindowsFormsApplication02\obj\Debug\WindowsFormsApplication02.pdb
+C:\Users\lamarLich\Documents\Visual Studio 2015\Projects\Acts\2_pink\WindowsFormsApplication02\bin\Debug\WindowsFormsApplication02.exe
+C:\Users\lamarLich\Documents\Visual Studio 2015\Projects\Acts\2_pink\WindowsFormsApplication02\bin\Debug\WindowsFormsApplication02.pdb
+C:\Users\lamarLich\Documents\Visual Studio 2015\Projects\Acts\2_pink\WindowsFormsApplication02\obj\Debug\WindowsFormsApplication02.csprojResolveAssemblyReference.cache
+C:\Users\lamarLich\Documents\Visual Studio 2015\Projects\Acts\2_pink\WindowsFormsApplication02\obj\Debug\WindowsFormsApplication02.FormEdit_Add_.resources
+C:\Users\lamarLich\Documents\Visual Studio 2015\Projects\Acts\2_pink\WindowsFormsApplication02\obj\Debug\WindowsFormsApplication02.MainForm.resources
+C:\Users\lamarLich\Documents\Visual Studio 2015\Projects\Acts\2_pink\WindowsFormsApplication02\obj\Debug\WindowsFormsApplication02.Properties.Resources.resources
+C:\Users\lamarLich\Documents\Visual Studio 2015\Projects\Acts\2_pink\WindowsFormsApplication02\obj\Debug\WindowsFormsApplication02.csproj.GenerateResource.Cache

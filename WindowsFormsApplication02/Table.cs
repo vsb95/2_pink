@@ -34,7 +34,7 @@ namespace UserService
         /// <param name="values">Список значений</param>
         public void InsertQuery(ArrayList values)
         {
-            var query = $"insert into {Name} values (";
+            var query = $"insert into [{Name}] values (";
             for (var i = 0; i < values.Count; i++)
             {
                 if (i > 0) query += ", ";
@@ -78,7 +78,7 @@ namespace UserService
 
         public void DeleteQuery(int id)
         {
-            var query = $"delete from {Name} where id = {id}";
+            var query = $"delete from {Name} where [{Fields[0].Name}] = {id}";
             var command = new SqlCommand(query, _connection);
             command.ExecuteNonQuery();
         }

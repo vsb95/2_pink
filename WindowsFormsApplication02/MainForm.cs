@@ -17,7 +17,9 @@ namespace WindowsFormsApplication02
     {
         private readonly UserService.UserService _service;
         private ArrayList _juornal;
-        
+        private bool _isLoginTried = false;
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace WindowsFormsApplication02
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            
+            _isLoginTried = true;
             try
             {
                 string role = _service.GetCurrentRole(tBoxLogin.Text, tBoxPass.Text);
@@ -113,9 +115,13 @@ namespace WindowsFormsApplication02
 
             try
             {
+                if (comboBoxTables.SelectedItem == null) return;
+                var editValuesList = new List<string>();
+                for (var i = 0; i < dataGridView2.SelectedRows[0].Cells.Count; i++)
+                    editValuesList.Add(dataGridView2.SelectedRows[0].Cells[i].Value.ToString());
                 var fields = _service.Tables.FirstOrDefault(t => t.Name == comboBoxTables.SelectedItem.ToString())
                     .Fields.Select(field => field.Name).ToList();
-                var frm = new FormEdit_Add_(_service, this, fields, comboBoxTables.SelectedItem.ToString());
+                var frm = new FormEdit_Add_(_service, this, fields, comboBoxTables.SelectedItem.ToString(), editValuesList);
                 frm.ShowDialog();
                 dataGridView2.DataSource = _service.SelectFromTable(comboBoxTables.SelectedItem.ToString());
             }
@@ -248,6 +254,7 @@ namespace WindowsFormsApplication02
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (!_isLoginTried) return;
             _juornal.Add(DateTime.Now);
             _juornal.Add(true);
             _service.InsertQuery(_juornal, "Журнал");

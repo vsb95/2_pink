@@ -12,6 +12,7 @@ namespace WindowsFormsApplication02
         private readonly UserService.UserService _service;
         private readonly Form _backForm;
         private readonly List<string> _record;
+        private readonly int _id;
 
 
         public FormEdit_Add_(UserService.UserService service, Form backForm, List<string> columns,
@@ -23,7 +24,6 @@ namespace WindowsFormsApplication02
             _record = record;
 
 
-
             InitializeComponent();
             dataGridView1.ColumnCount = columns.Count;
             for (var i = 0; i < columns.Count; i++)
@@ -33,6 +33,7 @@ namespace WindowsFormsApplication02
                 dataGridView1.Rows.Add();
                 for (var i = 0; i < record.Count; i++)
                     dataGridView1.Rows[0].Cells[i].Value = record[i];
+                _id = Convert.ToInt32(dataGridView1.Rows[0].Cells[0].Value);
             }
             else
                 dataGridView1.Rows.Add();
@@ -48,7 +49,7 @@ namespace WindowsFormsApplication02
                 if (_record == null)
                     _service.InsertQuery(values, _tableName);
                 else
-                    _service.UpdateQuery(values, _tableName, Convert.ToInt32(dataGridView1.Rows[0].Cells[0].Value));
+                    _service.UpdateQuery(values, _tableName, _id);
             }
             catch (Exception ex)
             {

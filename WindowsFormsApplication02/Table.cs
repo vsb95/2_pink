@@ -28,6 +28,11 @@ namespace UserService
             reader.Close();
         }
 
+        private string ConvertDate(string date)
+        {
+            var dt = Convert.ToDateTime(date);
+            return dt.ToString("u");
+        }
         /// <summary>
         /// Добавляет запись в таблицу
         /// </summary>
@@ -38,7 +43,14 @@ namespace UserService
             for (var i = 0; i < values.Count; i++)
             {
                 if (i > 0) query += ", ";
-                query += $"'{values[i]}'";
+                if (Fields[i].Type == "datetime2")
+                {
+                    query += $"'{ConvertDate(values[i].ToString())}'";
+                }
+                else
+                {
+                    query += $"'{values[i]}'";
+                }
             }
             query += ")";
             var command = new SqlCommand(query, _connection);
@@ -57,11 +69,18 @@ namespace UserService
             for (var i = 0; i < Fields.Count; i++)
             {
                 if (Fields[i].Name == "id") continue;
-                query += $"[{Fields[i].Name}] = '{values[i]}'";
+                if (Fields[i].Type == "datetime2")
+                {
+                    query += $"[{Fields[i].Name}] = '{ConvertDate(values[i].ToString())}'";
+                }
+                else
+                {
+                    query += $"[{Fields[i].Name}] = '{values[i]}'";
+                }
                 if (i < Fields.Count - 1)
                     query += ", ";
             }
-            query += $"where id = {id}";
+            query += $"where [{Fields[0].Name}] = {id}";
             var command = new SqlCommand(query, _connection);
             command.ExecuteNonQuery();
         }

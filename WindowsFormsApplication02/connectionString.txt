@@ -1,0 +1,1 @@
+Server=DESKTOP-U8HPG5P; Database= Акт оценки стоимости зданий и сооружений; Trusted_Connection = True;
